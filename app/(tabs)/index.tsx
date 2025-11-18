@@ -1,37 +1,50 @@
-import { Image } from 'expo-image';
-import { router } from 'expo-router';
-import { Button, StyleSheet, View } from 'react-native';
-
-const PlaceholderImage = require('@/assets/images/image.png');
+import { FlatList, StyleSheet, View } from 'react-native';
+import { useContext } from 'react';
+import ProductsContext from '@/app/types/product';
+import { ProductCard } from '@/components/ProductCard';
+import { Text } from '@/components/ui/text';
 
 export default function Index() {
-  return <View style={styles.container}>
-    <View style={styles.imageContainer}>
-      <Image source={PlaceholderImage} style={styles.image} />
-      <Button onPress={() => router.navigate("/filters")} title="Filters" />
-      <Button onPress={() => router.navigate("/product/123")} title="Go to product" />
-    </View>
-  </View>;
-}
+  const products = useContext(ProductsContext);
 
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Sunglasses Store</Text>
+      </View>
+      <FlatList
+        data={products}
+        renderItem={({ item }) => <ProductCard product={item} />}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
+        contentContainerStyle={styles.listContent}
+        showsVerticalScrollIndicator={false}
+      />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#f8f8f8',
   },
-  imageContainer: {
-    flex: 1,
-    gap: 12,
+  header: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 12,
+    backgroundColor: '#fff',
   },
-  image: {
-    width: 383,
-    height: 187,
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000',
   },
-  text: {
-    color: "white",
-    fontSize: 16,
-    textAlign: "center",
+  listContent: {
+    paddingVertical: 8,
+  },
+  columnWrapper: {
+    justifyContent: 'space-between',
   },
 });
