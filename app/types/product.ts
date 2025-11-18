@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export interface Product {
   id: string,
-  image: string,
+  image: number | string,
   info: {
     name: string,
     brand: string,
@@ -22,10 +22,15 @@ export interface Product {
   tagline: string,
 }
 
+const product1Image = require('../../assets/images/image.jpg');
+const product2Image = require('../../assets/images/image2.jpg');
+const product3Image = require('../../assets/images/image3.jpg');
+const product4Image = require('../../assets/images/image4.jpg');
+
 export const defaultProducts:Product[] = [
   {
     id: "1",
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop",
+    image: product1Image,
     info: {
       name: "Woke Up Like This",
       brand: "Ray-Ban",
@@ -48,7 +53,7 @@ These sleek, dark lenses hide a multitude of sins (like forgetting to brush your
   },
   {
     id: "2",
-    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0816?w=500&h=500&fit=crop",
+    image: product2Image,
     info: {
       name: "Glare Begone!",
       brand: "Oakley",
@@ -71,7 +76,7 @@ Now you can actually see where you're going, which is a definite plus. Also grea
   },
   {
     id: "3",
-    image: "https://images.unsplash.com/photo-1508181589267-2dd35b1e93c6?w=500&h=500&fit=crop",
+    image: product3Image,
     info: {
       name: "Summer Vibes",
       brand: "Gucci",
@@ -92,7 +97,7 @@ Now you can actually see where you're going, which is a definite plus. Also grea
   },
   {
     id: "4",
-    image: "https://images.unsplash.com/photo-1473496938886-e70fd3be0a61?w=500&h=500&fit=crop",
+    image: product4Image,
     info: {
       name: "Adventure Pro",
       brand: "Prada",

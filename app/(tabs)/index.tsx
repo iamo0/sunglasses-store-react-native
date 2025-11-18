@@ -14,26 +14,6 @@ export default function Index() {
 
   const renderHeader = () => (
     <View style={styles.headerSection}>
-      <View style={styles.headerTop}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.headerTitle}>Sunglasses Store</Text>
-        </View>
-        <Pressable 
-          style={styles.filterButton}
-          onPress={() => router.navigate('/filters')}
-        >
-          <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <Path
-              d="M3 6H21M5 12H19M8 18H16"
-              stroke="#000"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </Svg>
-        </Pressable>
-      </View>
-
       <View style={styles.bannerContainer}>
         <Image 
           source={PromoImage} 
@@ -44,12 +24,23 @@ export default function Index() {
 
       <View style={styles.exclusiveOfferSection}>
         <View style={styles.offerBadge}>
-          <Text style={styles.offerText}>✨ EXCLUSIVE OFFER</Text>
+          <Text style={styles.offerText}>✨ Exclusive Offer</Text>
+            <Pressable
+                style={styles.filterButton}
+                onPress={() => router.navigate('/filters')}
+            >
+                <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <Path
+                        d="M21 4H14M10 4H3M21 12H12M8 12H3M21 20H16M12 20H3M14 2V6M8 10V14M16 18V22"
+                        stroke="black"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </Svg>
+            </Pressable>
         </View>
-        <Text style={styles.offerDescription}>Get up to 30% off on selected items</Text>
       </View>
-
-      <Text style={styles.productsTitle}>Featured Products</Text>
     </View>
   );
 
@@ -78,25 +69,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginBottom: 8,
   },
-  headerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  titleContainer: {
-    flex: 1,
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#000',
-  },
   filterButton: {
     padding: 8,
-    borderRadius: 8,
-    backgroundColor: '#f0f0f0',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -110,36 +84,20 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   exclusiveOfferSection: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+    paddingHorizontal: 8,
+    paddingVertical: 8,
     backgroundColor: '#fff',
   },
   offerBadge: {
-    backgroundColor: '#FFF3CD',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-    marginBottom: 12,
-    alignSelf: 'flex-start',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
   },
   offerText: {
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: '700',
     color: '#000',
     letterSpacing: 0.5,
-  },
-  offerDescription: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 4,
-  },
-  productsTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#000',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    backgroundColor: '#fff',
   },
   listContent: {
     paddingVertical: 8,

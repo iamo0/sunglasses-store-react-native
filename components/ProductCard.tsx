@@ -18,9 +18,9 @@ export function ProductCard({ product }: ProductCardProps) {
       <View style={styles.imageContainer}>
         {product.image ? (
           <Image
-            source={{ uri: product.image }}
-            style={styles.image}
-            placeholder="PLACEHOLDER"
+              source={product.image}
+              style={styles.image}
+              placeholder="PLACEHOLDER"
           />
         ) : (
           <View style={[styles.image, styles.placeholder]}>
