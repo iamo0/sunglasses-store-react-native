@@ -21,6 +21,7 @@ export function ProductCard({ product }: ProductCardProps) {
               source={product.image}
               style={styles.image}
               placeholder="PLACEHOLDER"
+              contentFit="cover"
           />
         ) : (
           <View style={[styles.image, styles.placeholder]}>
@@ -55,14 +56,11 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     marginHorizontal: 8,
     elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+      boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.1)',
   },
   imageContainer: {
     width: '100%',
-    height: 180,
+    height: 170,
     backgroundColor: '#f5f5f5',
   },
   image: {

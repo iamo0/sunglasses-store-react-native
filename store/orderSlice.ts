@@ -7,7 +7,7 @@ export interface Order {
   total: number;
   paymentMethod: string;
   status: 'pending' | 'completed' | 'failed';
-  createdAt: Date;
+  createdAt: string;
 }
 
 interface OrderState {
@@ -31,7 +31,7 @@ const orderSlice = createSlice({
         total: action.payload.total,
         paymentMethod: action.payload.paymentMethod,
         status: 'pending',
-        createdAt: new Date(),
+          createdAt: new Date().toISOString(),
       };
       state.orders.push(newOrder);
       state.currentOrder = newOrder;

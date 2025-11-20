@@ -74,10 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+      boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.1)',
   },
   brandName: {
     fontSize: 16,

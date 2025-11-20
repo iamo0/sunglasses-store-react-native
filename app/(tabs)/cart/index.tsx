@@ -4,7 +4,7 @@ import { Text } from '@/components/ui/text';
 import { Button, ButtonText } from '@/components/ui/button';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
-import { removeFromCart, updateQuantity } from '@/store/cartSlice';
+import {CartItem, removeFromCart, updateQuantity} from '@/store/cartSlice';
 import { Image } from 'expo-image';
 
 export default function CartScreen() {
@@ -41,12 +41,12 @@ export default function CartScreen() {
     router.navigate('/checkout');
   };
 
-  const renderCartItem = ({ item }) => (
+  const renderCartItem = ({ item } : {item : CartItem}) => (
     <View style={styles.cartItem}>
       <View style={styles.imageContainer}>
         {item.product.image ? (
           <Image
-            source={{ uri: item.product.image }}
+              source={typeof item.product.image === 'string' ? { uri: item.product.image } : item.product.image}
             style={styles.productImage}
             placeholder="PLACEHOLDER"
           />
@@ -195,10 +195,11 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     alignItems: 'center',
     elevation: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
+      boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
+    // shadowColor: '#000',
+    // shadowOffset: { width: 0, height: 1 },
+    // shadowOpacity: 0.05,
+    // shadowRadius: 2,
   },
   imageContainer: {
     width: 80,
